@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Main activity -->
+    <string name="app_name">ACManageCCDevice</string>
+    <string name="hello_world">Please login to ARTIK Cloud</string>
+    <string name="click">login</string>
+    
+    <!-- Device activity -->
+    <string name="play_with_device">Add and authorize Cloud Connector devices</string>
+    <string name="welcome_txt">Welcome </string>
+    <string name="add_delete_btn_txt">Add Device</string>
+    <string name="sendmsg_response">Response </string>
+    <string name="auth_deauth_btn_txt">Authorize Device</string>
+    <string name="getlatest_response_mid">id </string>
+    <string name="getlatest_response_mdata">data </string>
+    <string name="authorize_device">Authorize device with 3rd party cloud</string>
+
+    <!-- Device Authorization activity -->
+    <string name="start_subscription_page" formatted="false"><![CDATA[
+      <html><body>
+            <form id=\'f\' action=\'%s\' method=\'POST\'>
+            <input type=\'hidden\' name=\'token\' value=\'%s\'/>
+            <form>
+         <script>
+         window.onload = function(){document.getElementById(\'f\').submit()};
+         </script>
+      </body></html>
+   ]]></string>
+
+</resources>

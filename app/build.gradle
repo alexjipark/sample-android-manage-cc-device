@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+
+dependencies {
+    compile 'cloud.artik:artikcloud-java:2.0.3'
+    compile 'com.android.volley:volley:1.0.0'
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "cloud.artik.example.add_auth_device"
+        minSdkVersion 21
+        targetSdkVersion 22
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+    }
+
+}
