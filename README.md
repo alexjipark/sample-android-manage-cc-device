@@ -2,14 +2,8 @@
 
 Let's build an Android application that creates, authorizes, de-authorizes, and deletes [Cloud Connector](https://developer.artik.cloud/documentation/connect-the-data/using-cloud-connectors.html) devices from ARTIK Cloud.
 
-Introduction
--------------
-
-Example of Cloud Connector devices blah blah (workswith).....
-
-(TODO) The tutorial [Your first Android app](https://developer.artik.cloud/documentation/tutorials/your-first-android-app.html) at https://developer.artik.cloud/documentation describes what the system does and how it is implemented.
-
-(TODO) Consult [Initial setup](https://developer.artik.cloud/documentation/tutorials/your-first-android-app.html#initial-setup) in the tutorial to set up the cloud and Android App.
+The blog post Manage Cloud Connector device authentication within your application
+(TODO at link to the blog post here....) at https://www.artik.io/blog/cloud/ describes what the app does and how to setup/install/implement it.
 
 More about ARTIK Cloud
 ---------------
