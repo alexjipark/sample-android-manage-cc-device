@@ -27,7 +27,7 @@ public class ArtikCloudSession {
     private final static String TAG = ArtikCloudSession.class.getSimpleName();
 
     // Copy them from the corresponding application in the Developer Dashboard
-    public static final String CLIENT_ID = "ab36a33c8f384451925e38f0e6306d64";//  public static final String CLIENT_ID = "<YOUR CLIENT ID>";
+    public static final String CLIENT_ID = "<YOUR CLIENT ID>";
     public static final String REDIRECT_URL = "app://redirect";
 
     public static final String ARTIK_CLOUD_AUTH_BASE_URL = "https://accounts.artik.cloud";

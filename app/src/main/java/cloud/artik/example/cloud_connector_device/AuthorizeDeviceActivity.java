@@ -20,13 +20,13 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import org.apache.http.util.EncodingUtils;
+
 public class AuthorizeDeviceActivity extends Activity {
     private static final String TAG = "AuthorizeDevice";
 
     private WebView mWebView;
     private ProgressDialog mProgressBar;
-
-    boolean mAuthSucceeded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,6 @@ public class AuthorizeDeviceActivity extends Activity {
 
         String authUrl = ArtikCloudSession.getInstance().getAuthWith3rdPartyCloudUri();
 
-        mAuthSucceeded = false;
         loadWebView(authUrl);
 
         /*
@@ -57,43 +56,48 @@ public class AuthorizeDeviceActivity extends Activity {
 
             if (url.contains(ArtikCloudSession.REFERER)) {
                 Log.d(TAG, "Catch Referer");
-                mAuthSucceeded = true;
                 handleAuthSuccess();
                 return true;
             }
 
-            boolean override = super.shouldOverrideUrlLoading(view, url);
-            Log.d(TAG, "Leaving shouldOverrideUrlLoading with url:" + url + " shouldOverride = " + override);
-            return override;
+            return super.shouldOverrideUrlLoading(view, url);
         }
 
 
         @Override
         public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-            Log.i("Request", request.getUrl() + request.getRequestHeaders().toString());
             return null;
         }
 
         @Override
         public void onPageFinished(WebView view, String url) {
-            Log.d(TAG, "YWU Entering onPageFinished with url:" + url + " authSucceeded = " + mAuthSucceeded);
             if (mProgressBar.isShowing()) {
                 mProgressBar.dismiss();
             }
          }
     };
 
+
+    // Call API documented at https://developer.artik.cloud/documentation/api-reference/rest-api.html#authenticate-a-cloud-connector-device
+    // In the following method, it puts an access token and referer in the http body
     private void loadWebView(final String url) {
         Log.d(TAG, "loadWebView url " + url);
-        //String postData = "token=" + ArtikCloudSession.getInstance().getAccessToken();
+        String postData = "token=" + ArtikCloudSession.getInstance().getAccessToken() + "&referer=" + ArtikCloudSession.REFERER;
         mProgressBar = ProgressDialog.show(AuthorizeDeviceActivity.this, "", "Loading...");
         mWebView.setWebViewClient(webViewClient);
-        //mWebView.postUrl(url, EncodingUtils.getBytes(postData, "BASE64"));
-
-        String content = getString(R.string.start_subscription_page, url, ArtikCloudSession.getInstance().getAccessToken());
-        mWebView.loadDataWithBaseURL(ArtikCloudSession.REFERER, content, "text/html", "UTF-8", null); //should be http or https to set referer
-
+        mWebView.postUrl(url, EncodingUtils.getBytes(postData, "BASE64"));
     }
+
+    // Another way to call "Authenticate a Cloud Connector device" by sending Referer in the head
+    // and access token in the body. Specifically, this function also use the form.
+//    private void loadWebView(final String url) {
+//        Log.d(TAG, "loadWebView url " + url);
+//        mProgressBar = ProgressDialog.show(AuthorizeDeviceActivity.this, "", "Loading...");
+//        mWebView.setWebViewClient(webViewClient);
+//
+//        String content = getString(R.string.start_subscription_page, url, ArtikCloudSession.getInstance().getAccessToken());
+//        mWebView.loadDataWithBaseURL(ArtikCloudSession.REFERER, content, "text/html", "UTF-8", null); //should be http or https to set referer
+//    }
 
     private void handleAuthSuccess()
     {

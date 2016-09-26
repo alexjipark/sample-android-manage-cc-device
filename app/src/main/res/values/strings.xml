@@ -7,7 +7,7 @@
     <string name="click">login</string>
     
     <!-- Device activity -->
-    <string name="play_with_device">Add and authorize Cloud Connector devices</string>
+    <string name="play_with_device">Manage Cloud Connector devices</string>
     <string name="welcome_txt">Welcome </string>
     <string name="add_delete_btn_txt">Add Device</string>
     <string name="sendmsg_response">Response </string>

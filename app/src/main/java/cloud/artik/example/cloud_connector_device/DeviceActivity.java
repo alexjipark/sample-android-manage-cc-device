@@ -293,7 +293,7 @@ public class DeviceActivity extends Activity {
             @Override
             public void onResponse(String response) {
                 Log.i(TAG, "onResponse"+ response.toString());
-                // Make API call to get the updated Device Info.
+                // De-authorization succeeded. Make another API call to get the updated Device Info.
                 if (mProgressDialog.isShowing()) {
                     mProgressDialog.dismiss();
                 }
