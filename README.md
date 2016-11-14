@@ -11,7 +11,7 @@ If you are not familiar with ARTIK Cloud, we have extensive documentation at htt
 
 The full ARTIK Cloud API specification can be found at https://developer.artik.cloud/documentation/api-spec.html
 
-Peek into advanced sample applications at https://developer.artik.cloud/documentation/samples/
+See advanced sample applications at https://developer.artik.cloud/documentation/samples/
 
 To create and manage your services and devices on ARTIK Cloud, visit the Developer Dashboard at https://developer.artik.cloud
 
